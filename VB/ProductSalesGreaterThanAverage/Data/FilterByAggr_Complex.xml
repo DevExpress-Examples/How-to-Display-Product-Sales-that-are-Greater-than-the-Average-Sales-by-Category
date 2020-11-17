@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Dashboard" />
+  <DataConnections>
+    <DataConnection Name="nwindConnection 2" ProviderKey="Access97">
+      <Parameters>
+        <Parameter Name="database" Value="D:\work\2013.2\DB.Standard\nwind.mdb" />
+        <Parameter Name="read only" Value="1" />
+        <Parameter Name="generateConnectionHelper" Value="false" />
+      </Parameters>
+    </DataConnection>
+  </DataConnections>
+  <DataSources>
+    <SqlDataSource Name="dataSource1" ComponentName="dataSource1">
+      <Connection Name="nwindConnection 2" ProviderKey="Access97">
+        <Parameters>
+          <Parameter Name="database" Value="D:\data sourses\nwind.mdb" />
+          <Parameter Name="read only" Value="1" />
+          <Parameter Name="generateConnectionHelper" Value="false" />
+          <Parameter Name="userid" Value="" />
+          <Parameter Name="password" Value="" />
+        </Parameters>
+      </Connection>
+      <Query Type="SelectQuery" Name="dataSource1">
+        <Tables>
+          <Table Name="ProductReports" />
+        </Tables>
+        <Columns>
+          <Column Table="ProductReports" Name="CategoryName" />
+          <Column Table="ProductReports" Name="ProductName" />
+          <Column Table="ProductReports" Name="ProductSales" />
+          <Column Table="ProductReports" Name="ShippedDate" />
+        </Columns>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="dataSource1">
+          <View Name="dataSource1">
+            <Field Name="CategoryName" Type="String" />
+            <Field Name="ProductName" Type="String" />
+            <Field Name="ProductSales" Type="Decimal" />
+            <Field Name="ShippedDate" Type="DateTime" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+      <CalculatedFields>
+        <CalculatedField Name="SalesByProduct" Expression="aggr(Sum([ProductSales]), [CategoryName], [ProductName])" DataType="Auto" DataMember="dataSource1" />
+        <CalculatedField Name="SalesByProductAverageInCategory" Expression="aggr(Avg([SalesByProduct]), [CategoryName])" DataType="Auto" DataMember="dataSource1" />
+      </CalculatedFields>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="Which Products Has Sales Greater Than Average Sales in Category?" DataSource="dataSource1" DataMember="dataSource1" FilterString="[DataItem1] &gt; [DataItem2]">
+      <DataItems>
+        <Dimension DataMember="ProductName" DefaultId="DataItem0" />
+        <Dimension DataMember="SalesByProduct" DefaultId="DataItem1" />
+        <Dimension DataMember="SalesByProductAverageInCategory" DefaultId="DataItem2" />
+        <Measure DataMember="ProductSales" DefaultId="DataItem3" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem2" />
+      </HiddenDimensions>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridMeasureColumn>
+          <Measure DefaultId="DataItem3" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="gridDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
