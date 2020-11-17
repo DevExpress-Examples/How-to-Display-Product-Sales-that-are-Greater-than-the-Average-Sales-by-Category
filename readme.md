@@ -2,7 +2,7 @@
 
 The example shows how to filter item source data by the aggregated ProductSales field and how to display only total sales by products that are greater than the average sales of the entire category.
 
-![grid](images/grid.png)
+![grid](image/grid.png)
 
 For more information, see examples from the [Intermediate Level Aggregations](https://docs.devexpress.com/Dashboard/115870/) topic.
 
