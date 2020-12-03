@@ -1,4 +1,4 @@
-# How to Display Product Sales that are Greater than the Average Sales by Category
+# How to Display Products with Sales Greater than Average Sales per Category
 
 The example shows how to filter item source data by the aggregated ProductSales field and how to display only total sales by products that are greater than the average sales of the entire category.
 
