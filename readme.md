@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Form1.cs](./CS/ProductSalesGreaterThanAverage/Form1.cs) (VB: [Form1.vb](./VB/ProductSalesGreaterThanAverage/Form1.vb))
+<!-- default file list end -->
+
 # Dashboard for WinForms - How to Display Products with Sales Greater than Average Sales per Category
 
 The example shows how to filter item source data by the aggregated *ProductSales* field and how to display only total sales by products that are greater than the average sales of the entire category.
